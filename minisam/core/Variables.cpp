@@ -25,6 +25,18 @@ Variables::Variables(const Variables& variables)
 }
 
 /* ************************************************************************** */
+Variables& Variables::operator=(const Variables& variables) {
+  keyvalues_ =variables.keyvalues_;
+  if (keyvalues_.size() > 0) {
+    for (auto it1 = keyvalues_.begin(); it1 != keyvalues_.end(); it1++) {
+      it1->second = it1->second->copy();
+    }
+  }
+
+  return *this;
+}
+
+/* ************************************************************************** */
 void Variables::print(std::ostream& out) const {
   if (size() == 0) {
     out << "Empty Variables" << std::endl;
