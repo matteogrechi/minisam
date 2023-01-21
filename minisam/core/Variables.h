@@ -36,7 +36,10 @@ class Variables {
 
   // print
   void print(std::ostream& out = std::cout) const;
-
+ 
+  // Copy
+  Variables& operator=(const Variables& variables);
+  
   /** data operators */
 
   // insert data by variable type
